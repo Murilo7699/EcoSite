@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco - Número de luzes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .lights-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .back-card {
+            border: 2px solid #6485ff;
+            border-radius: 0 0 36px 36px;
+            padding: 18px;
+            margin-bottom: 32px;
+        }
+
+        .back-card a {
+            display: inline-block;
+            color: white;
+            background: #087dc1;
+            border: 2px solid #222;
+            text-decoration: none;
+            padding: 2px 8px;
+        }
+
+        .lights-title {
+            font-size: 24px;
+            font-weight: normal;
+            margin: 32px 0 48px;
+        }
+
+        .lights-options {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .light-card {
+            width: 100px;
+            height: 118px;
+            border: 1px solid #ffc9ae;
+            border-radius: 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #222;
+            background: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .light-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 14px #00000012;
+        }
+
+        .light-card svg {
+            width: 58px;
+            height: 65px;
+            color: #ff812f;
+        }
+
+        .light-card.eco {
+            width: 150px;
+        }
+
+        .light-card.eco svg {
+            color: #00ae20;
+        }
+
+        .light-card span {
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .custom-input {
+            margin: 30px auto;
+            max-width: 260px;
+        }
+
+        .custom-input input {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .lights-options {
+                gap: 18px;
+            }
+
+            .lights-title {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="lights-page">
+        <div class="back-card">
+            <a href="/" aria-label="Voltar ao início">↓</a>
+        </div>
+
+        <h1 class="lights-title">Escolha o número de luzes</h1>
+
+        <div class="lights-options">
+            <a class="light-card" href="/result/{{ size }}/2">
+                <svg viewBox="0 0 64 64" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 38c-4-4-7-9-7-15a17 17 0 0 1 34 0c0 6-3 11-7 15l-2 5H24z"/>
+                    <path d="M25 46h14M26 50h12M29 54h6"/>
+                    <path d="M26 24c0-7 5-11 12-10M32 28v14M25 28l7 5 7-5"/>
+                    <path d="M32 3V0M10 10l-4-4M54 10l4-4M7 26H2M57 26h5M12 44l-4 4M52 44l4 4"/>
+                </svg>
+                <span>2-4 lâmpadas</span>
+            </a>
+
+            <a class="light-card" href="/result/{{ size }}/5">
+                <svg viewBox="0 0 64 64" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 38c-4-4-7-9-7-15a17 17 0 0 1 34 0c0 6-3 11-7 15l-2 5H24z"/>
+                    <path d="M25 46h14M26 50h12M29 54h6"/>
+                    <path d="M26 24c0-7 5-11 12-10M32 28v14M25 28l7 5 7-5"/>
+                    <path d="M32 3V0M10 10l-4-4M54 10l4-4M7 26H2M57 26h5M12 44l-4 4M52 44l4 4"/>
+                </svg>
+                <span>4-6 lâmpadas</span>
+            </a>
+
+            <a class="light-card" href="/result/{{ size }}/8">
+                <svg viewBox="0 0 64 64" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 38c-4-4-7-9-7-15a17 17 0 0 1 34 0c0 6-3 11-7 15l-2 5H24z"/>
+                    <path d="M25 46h14M26 50h12M29 54h6"/>
+                    <path d="M26 24c0-7 5-11 12-10M32 28v14M25 28l7 5 7-5"/>
+                    <path d="M32 3V0M10 10l-4-4M54 10l4-4M7 26H2M57 26h5M12 44l-4 4M52 44l4 4"/>
+                </svg>
+                <span>8 ou mais</span>
+            </a>
+
+            <a class="light-card eco" href="/result/{{ size }}/3">
+                <svg viewBox="0 0 64 64" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 38c-4-4-7-9-7-15a17 17 0 0 1 34 0c0 6-3 11-7 15l-2 5H24z"/>
+                    <path d="M25 46h14M26 50h12M29 54h6"/>
+                    <path d="M26 24c0-7 5-11 12-10M32 28v14M25 28l7 5 7-5"/>
+                    <path d="M32 3V0M10 10l-4-4M54 10l4-4M7 26H2M57 26h5M12 44l-4 4M52 44l4 4"/>
+                </svg>
+                <span>Nossa construção ecológica!</span>
+            </a>
+        </div>
+
+        <p style="color:#666; font-size:13px; margin-top:30px;">
+            Selecione uma opção para ver seu resultado.
+        </p>
+    </main>
+</body>
+</html>
